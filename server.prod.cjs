@@ -20,7 +20,7 @@ app.use(
 
 app.use('*', async (req, res) => {
   try {
-    const url = req.originalUrl
+    const url = req.originalUrl.replace('/mobile/', '/');
 
     const template = fs.readFileSync(resolve('dist/client/index.html'), 'utf-8')
     const render = require('./dist/node/entry-server.js').render

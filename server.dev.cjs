@@ -29,7 +29,7 @@ async function createServer(root = process.cwd()) {
 
   app.use("*", async (req, res) => {
     try {
-      const url = req.originalUrl;
+      const url = req.originalUrl.replace('/mobile/', '/');
 
       let template = fs.readFileSync(resolve("index.html"), "utf-8");
       template = await vite.transformIndexHtml(url, template);
